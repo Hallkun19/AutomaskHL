@@ -1,7 +1,7 @@
 (function (thisObj) {
     function buildUI(thisObj) {
 
-        var win = (thisObj instanceof Panel) ? thisObj : new Window("palette", "レイヤーアニメーションツール", undefined, { resizeable: true });
+        var win = (thisObj instanceof Panel) ? thisObj : new Window("palette", "レイヤーアニメーションツール V7 (固定マスク/マーカー不要)", undefined, { resizeable: true });
         if (win !== null) {
             win.orientation = "column";
             win.alignChildren = ["fill", "top"];
@@ -19,7 +19,7 @@
             var moveScaleInput = scaleGroup.add("edittext", undefined, "1.0");
             moveScaleInput.characters = 5;
 
-            var maskCheckbox = win.add("checkbox", undefined, "固定マスクを追加する"); 
+            var maskCheckbox = win.add("checkbox", undefined, "固定マスクを追加する (Expression / 減算 / マーカー不要)"); 
             maskCheckbox.value = true;
 
             var applyBtn = win.add("button", undefined, "実行");
@@ -50,7 +50,7 @@
                     return;
                 }
 
-                app.beginUndoGroup("固定マスクとアニメーション追加");
+                app.beginUndoGroup("固定マスク(減算Expr/マーカー不要)とアニメーション追加");
 
                 var mem_rand = 0;
 
@@ -95,7 +95,7 @@
                         if (maskCheckbox.value) {
 
                             var mask = layer.Masks.addProperty("ADBE Mask Atom");
-                            mask.name = "Fixed Position Mask"; 
+                            mask.name = "Fixed Position Mask (Expr/NoMarker)"; 
                             mask.maskMode = MaskMode.SUBTRACT; 
 
                             var maskPath = mask.property("ADBE Mask Shape");
@@ -175,4 +175,3 @@
     }
 
 })(this);
-
