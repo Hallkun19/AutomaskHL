@@ -1,7 +1,7 @@
 (function (thisObj) {
     function buildUI(thisObj) {
 
-        var win = (thisObj instanceof Panel) ? thisObj : new Window("palette", "レイヤーアニメーションツール V7 (固定マスク/マーカー不要)", undefined, { resizeable: true });
+        var win = (thisObj instanceof Panel) ? thisObj : new Window("palette", "レイヤーアニメーションツール", undefined, { resizeable: true });
         if (win !== null) {
             win.orientation = "column";
             win.alignChildren = ["fill", "top"];
